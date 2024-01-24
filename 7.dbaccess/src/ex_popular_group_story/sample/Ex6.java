@@ -1,13 +1,13 @@
-package ex_popular_group_story;
+package ex_popular_group_story.sample;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class Ex4 {
+public class Ex6 {
     public static void main(String[] args) {
-        String url="jdbc:postgresql://localhost:5432/student";
+         String url="jdbc:postgresql://localhost:5432/student";
         String user="postgres";
         String passwword="postgres";
 
@@ -19,15 +19,9 @@ public class Ex4 {
             con=DriverManager.getConnection(url, user, passwword);
 
             sql="""
-                update
+                drop
+                table
                 members
-                set
-                name='宮木 香'
-                ,birth_day='1995-11-22'
-                ,gender='女'
-                
-                where
-                id=1
                 ;
             """;
             

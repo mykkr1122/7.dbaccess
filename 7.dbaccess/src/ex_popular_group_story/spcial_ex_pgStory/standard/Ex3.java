@@ -1,4 +1,4 @@
-package ex_popular_group_story.spcial_ex_pgStory;
+package ex_popular_group_story.spcial_ex_pgStory.standard;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

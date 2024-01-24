@@ -1,11 +1,11 @@
-package ex_popular_group_story;
+package ex_popular_group_story.spcial_ex_pgStory.standard;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class Ex5 {
+public class Ex4 {
     public static void main(String[] args) {
         String url="jdbc:postgresql://localhost:5432/student";
         String user="postgres";
@@ -25,11 +25,16 @@ public class Ex5 {
                 where
                 id=1
                 ;
-                delete
-                from
+
+                insert into
                 members
-                where
-                id=2
+                values
+                (6
+                ,'宮木 香'
+                ,'1995-11-22'
+                ,'女'
+                ,6
+                )
                 ;
             """;
             

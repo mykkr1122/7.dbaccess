@@ -1,10 +1,13 @@
+package ex_popular_group_story.sample;
+
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class Ex1 {
+public class Ex3 {
     public static void main(String[] args) {
         String url="jdbc:postgresql://localhost:5432/student";
         String user="postgres";
@@ -19,11 +22,11 @@ public class Ex1 {
             con=DriverManager.getConnection(url, user, password);
 
             sql="""
-                    select
-                    id,name
-                    from
-                    departments
-                    ;
+                select
+                *
+                from
+                members
+                ;
             """;
             
             pstmt=con.prepareStatement(sql);
@@ -31,17 +34,23 @@ public class Ex1 {
             rs=pstmt.executeQuery();
 
             while (rs.next()) {
-                int id=rs.getInt("id");
+                
                 String name=rs.getString("name");
+                Date birth_day=rs.getDate("birth_day");
+                String gender=rs.getString("gender");
+                int color_id=rs.getInt("color_id");
 
-                System.out.println("id="+id);
                 System.out.println("name="+name);
+                System.out.println("birth_day ="+birth_day);
+                System.out.println("gender= "+ gender);
+                System.out.println("color_id="+color_id);
+
                 System.out.println();
             }
         } catch (SQLException ex) {
             System.out.println();
-            System.out.println("SQL関連の例外が発生しました");          
-                System.out.println("発生したSQLは「"+sql+"」です");         //どんな操作をしたのかわかるように親切に書いている
+            System.err.println("SQL関連の例外が発生しました");          
+                System.err.println("発生したSQLは「"+sql+"」です");         //どんな操作をしたのかわかるように親切に書いている
                 ex.printStackTrace();
         } finally{                                  //finallyでclose処理しないとメモリ圧迫する
                 try {

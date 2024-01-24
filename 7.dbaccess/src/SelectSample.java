@@ -46,8 +46,8 @@ public class SelectSample {
                 System.out.println();
             }
         } catch (SQLException ex) {                                     //検査例外ため、例外処理が必要
-                System.out.println("SQL関連の例外が発生しました");          
-                System.out.println("発生したSQLは「"+sql+"」です");         //どんな操作をしたのかわかるように親切に書いている
+                System.err.println("SQL関連の例外が発生しました");          
+                System.err.println("発生したSQLは「"+sql+"」です");         //どんな操作をしたのかわかるように親切に書いている
                 ex.printStackTrace();
         } finally{                                  //finallyでclose処理しないとメモリ圧迫する
                 try {

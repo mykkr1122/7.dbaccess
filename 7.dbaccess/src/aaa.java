@@ -1,16 +1,16 @@
-package ex_popular_group_story.spcial_ex_pgStory;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class Ex1 {
+public class aaa {
     public static void main(String[] args) {
-         String url="jdbc:postgresql://localhost:5432/student";
+        String url="jdbc:postgresql://localhost:5432/miyakikaoru";
         String user="postgres";
         String passwword="postgres";
 
+        ResultSet rs=null;
         Connection con=null;
         PreparedStatement pstmt=null;
         String sql=null;
@@ -19,33 +19,22 @@ public class Ex1 {
             con=DriverManager.getConnection(url, user, passwword);
 
             sql="""
-                drop table
-                if exists colors;
-
-                create table colors
-                (id integer primary key,
-                    name text
-                )
-                ;
-
-                drop table
-                if exists members;
-
-                create table members
-                (id serial primary key,
-                    name text not null,
-                    birth_day date,
-                    gender varchar(1),
-                    color_id integer ,
- 	                foreign key (color_id) references colors(id)
-                )
-                ;
+                select *
+                from colors
             """;
             
             pstmt=con.prepareStatement(sql);
 
-            int numOfUpdate=pstmt.executeUpdate();
-            System.out.println(numOfUpdate+"件のデータを操作しました");
+            rs=pstmt.executeQuery();
+            while(rs.next()){                                  
+                int id=rs.getInt("id");            
+                String name=rs.getString("name");
+
+
+                System.out.println("id="+id);
+                System.out.println("name="+name);
+                System.out.println();
+            }
         } catch (SQLException ex) {
             System.out.println("SQL="+sql);
             ex.printStackTrace();
@@ -62,5 +51,6 @@ public class Ex1 {
                 e.printStackTrace();
             }
         }
+       
     }
 }

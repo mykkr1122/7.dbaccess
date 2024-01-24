@@ -1,11 +1,11 @@
-package ex_popular_group_story;
+package ex_popular_group_story.spcial_ex_pgStory.standard;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class Ex6 {
+public class Ex1 {
     public static void main(String[] args) {
          String url="jdbc:postgresql://localhost:5432/student";
         String user="postgres";
@@ -19,9 +19,26 @@ public class Ex6 {
             con=DriverManager.getConnection(url, user, passwword);
 
             sql="""
-                drop
-                table
-                members
+                drop table
+                if exists colors;
+
+                create table colors
+                (id integer primary key,
+                    name text
+                )
+                ;
+
+                drop table
+                if exists members;
+
+                create table members
+                (id serial primary key,
+                    name text not null,
+                    birth_day date,
+                    gender varchar(1),
+                    color_id integer ,
+ 	                foreign key (color_id) references colors(id)
+                )
                 ;
             """;
             

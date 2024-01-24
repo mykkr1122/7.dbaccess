@@ -1,4 +1,4 @@
-package ex_popular_group_story;
+package ex_popular_group_story.spcial_ex_pgStory.standard;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -7,7 +7,8 @@ import java.sql.SQLException;
 
 public class Ex2 {
     public static void main(String[] args) {
-        String url="jdbc:postgresql://localhost:5432/student";
+       
+       String url="jdbc:postgresql://localhost:5432/student";
         String user="postgres";
         String passwword="postgres";
 
@@ -20,14 +21,15 @@ public class Ex2 {
 
             sql="""
                 insert into
-                members
-                (name,birth_day,gender,color_id)
+                colors
+                (id,name)
                 values
-                ('大野 智','1980-11-26','男',1)
-                ('櫻井 翔','1982-01-25','男',2)
-                ('相葉 雅紀','1982-12-24','男',3)
-                ('二宮 和也','1983-06-17','男',4)
-                ('松本 潤','1983-08-30','男',5)
+                (1,'blue')
+                ,(2,'red')
+                ,(3,'green')
+                ,(4,'yellow')
+                ,(5,'purple')
+                ,(6,'orange')
                 ;
             """;
             
@@ -51,5 +53,7 @@ public class Ex2 {
                 e.printStackTrace();
             }
         }
+       
+        
     }
 }

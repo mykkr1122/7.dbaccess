@@ -1,11 +1,11 @@
-package ex_popular_group_story.spcial_ex_pgStory;
+package ex_popular_group_story.sample;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class Ex4 {
+public class Ex2 {
     public static void main(String[] args) {
         String url="jdbc:postgresql://localhost:5432/student";
         String user="postgres";
@@ -21,13 +21,13 @@ public class Ex4 {
             sql="""
                 insert into
                 members
+                (name,birth_day,gender,color_id)
                 values
-                name='宮木 香'
-                ,birth_day='1995-11-22'
-                ,gender='女'
-                
-                where
-                id=1
+                ('大野 智','1980-11-26','男',1)
+                ,('櫻井 翔','1982-01-25','男',2)
+                ,('相葉 雅紀','1982-12-24','男',3)
+                ,('二宮 和也','1983-06-17','男',4)
+                ,('松本 潤','1983-08-30','男',5)
                 ;
             """;
             
